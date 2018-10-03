@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Description>Bionic Capacitor Template - Capacitor Project Template for Bionic</Description>
+    <PackageOutputPath>./nupkg</PackageOutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="content/platforms/**/*.*;" />
+    <Content Remove="**/*.DS_Store" />
+  </ItemGroup>
+
+</Project>

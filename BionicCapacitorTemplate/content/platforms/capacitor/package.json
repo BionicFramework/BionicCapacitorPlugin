@@ -1,0 +1,8 @@
+{
+  "name": "BionicApp",
+  "version": "1.0.0",
+  "dependencies": {
+    "@capacitor/cli": "^1.0.0-beta.8",
+    "@capacitor/core": "^1.0.0-beta.8"
+  }
+}

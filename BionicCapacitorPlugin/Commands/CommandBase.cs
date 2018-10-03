@@ -1,0 +1,13 @@
+using McMaster.Extensions.CommandLineUtils;
+
+// TODO: Move class to BionicCore lib
+namespace BionicCapacitorPlugin.Commands {
+  public abstract class CommandBase {
+    [HelpOption("-?|-h|--help")]
+    protected bool IsHelp { get; }
+
+    public CommandBase Subcommand { get; set; }
+
+    protected abstract int OnExecute(CommandLineApplication app);
+  }
+}

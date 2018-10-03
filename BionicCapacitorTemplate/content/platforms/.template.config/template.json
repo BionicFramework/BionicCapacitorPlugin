@@ -1,0 +1,11 @@
+{
+  "author": "Bruno Santos",
+  "classifications": [ "Web/Blazor" ],
+  "name": "Bionic Capacitor Template",
+  "identity": "Bionic.Capacitor.Template",
+  "shortName": "bionic.capacitor",
+  "tags": {
+    "language": "JS"
+  },
+  "sourceName": "BionicCapacitorTemplate"
+}
