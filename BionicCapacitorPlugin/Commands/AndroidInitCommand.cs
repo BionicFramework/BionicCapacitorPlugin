@@ -23,7 +23,7 @@ namespace BionicCapacitorPlugin.Commands {
         Directory.SetCurrentDirectory(capDir);
         NpxCapAddAndroid();
       }
-      catch (Exception e) {
+      catch (Exception) {
         Console.WriteLine($"☠  Something went wrong during Capacitor Android initialization. Please check platforms/capacitor");
         return 1;
       }

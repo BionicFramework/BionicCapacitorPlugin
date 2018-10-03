@@ -23,7 +23,7 @@ namespace BionicCapacitorPlugin.Commands {
         Directory.SetCurrentDirectory(capDir);
         Helper.RunCmd("npx", "cap open ios");
       }
-      catch (Exception e) {
+      catch (Exception) {
         Console.WriteLine($"☠  Unable to open iOS Capacitor project. Please check platforms/capacitor");
         return 1;
       }

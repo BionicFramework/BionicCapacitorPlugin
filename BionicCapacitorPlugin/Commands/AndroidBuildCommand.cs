@@ -24,7 +24,7 @@ namespace BionicCapacitorPlugin.Commands {
         Directory.SetCurrentDirectory(capDir);
         Helper.RunCmd("npx", "cap copy android");
       }
-      catch (Exception e) {
+      catch (Exception) {
         Console.WriteLine($"☠  Unable to build Android Capacitor project. Please check platforms/capacitor");
         return 1;
       }

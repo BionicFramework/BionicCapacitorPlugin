@@ -23,7 +23,7 @@ namespace BionicCapacitorPlugin.Commands {
         Directory.SetCurrentDirectory(capDir);
         NpxCapAddIOS();
       }
-      catch (Exception e) {
+      catch (Exception) {
         Console.WriteLine($"☠  Something went wrong during Capacitor iOS initialization. Please check platforms/capacitor");
         return 1;
       }

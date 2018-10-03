@@ -24,7 +24,7 @@ namespace BionicCapacitorPlugin.Commands {
         Directory.SetCurrentDirectory(capDir);
         Helper.RunCmd("npx", "cap sync ios");
       }
-      catch (Exception e) {
+      catch (Exception) {
         Console.WriteLine($"☠  Unable to sync iOS Capacitor project. Please check platforms/capacitor");
         return 1;
       }

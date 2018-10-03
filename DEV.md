@@ -21,16 +21,16 @@ dotnet pack -c Release /p:SourceLinkCreate=true /p:VersionSuffix= /p:OfficialBui
 ## Add local package as nuget install sources
 
 ```bash
-nuget sources add -name BionicElectron -source ~/RiderProjects/BionicElectron/BionicElectronPlugin/nupkg
-nuget sources add -name BionicElectronTemplate -source ~/RiderProjects/BionicElectron/BionicElectronTemplate/nupkg
+nuget sources add -name BionicCapacitor -source $PWD/BionicCapacitorPlugin/nupkg
+nuget sources add -name BionicCapacitorTemplate -source $PWD/BionicCapcitorTemplate/nupkg
 ```
 
  ## Install local plugin
 
-In a Blazor client side project execute:
+In a ***Blazor Standalone (or Hosted Client)*** project execute:
 
  ```bash
-nuget install BionicElectronPlugin -DirectDownload -ExcludeVersion -PackageSaveMode nuspec -o .bionic
+nuget install BionicCapacitorPlugin -DirectDownload -ExcludeVersion -PackageSaveMode nuspec -o .bionic
  ```
 
 The plugin should be now installed. Test it using:
@@ -39,6 +39,6 @@ The plugin should be now installed. Test it using:
 bionic platform
 ```
 
-And ***electron*** should now be listed as a command.
+And ***capacitor*** should now be listed as a command.
 
 To re-install in project, remove .bionic, re-build, re-pack and follow the last two steps under [Install local plugin](#install-local-plugin).

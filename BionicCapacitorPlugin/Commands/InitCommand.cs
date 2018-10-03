@@ -25,7 +25,7 @@ namespace BionicCapacitorPlugin.Commands {
         NpmInstall();
         NpxCapInit();
       }
-      catch (Exception e) {
+      catch (Exception) {
         Console.WriteLine($"☠  Something went wrong during Capacitor install. Please check platforms/capacitor");
         return 1;
       }

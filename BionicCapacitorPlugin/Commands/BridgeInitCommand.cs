@@ -22,7 +22,7 @@ namespace BionicCapacitorPlugin.Commands {
       try {
         InstallBionicCapacitorBridge();
       }
-      catch (Exception e) {
+      catch (Exception) {
         Console.WriteLine($"☠  Something went wrong during Capacitor Bridge initialization. Please check project .csproj file");
         return 1;
       }

@@ -24,7 +24,7 @@ namespace BionicCapacitorPlugin.Commands {
         Directory.SetCurrentDirectory(capDir);
         Helper.RunCmd("npx", "cap sync android");
       }
-      catch (Exception e) {
+      catch (Exception) {
         Console.WriteLine($"☠  Unable to sync Android Capacitor project. Please check platforms/capacitor");
         return 1;
       }
