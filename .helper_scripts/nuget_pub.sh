@@ -18,8 +18,6 @@ fi
 
 ${DIR}/build_release.sh
 
-dotnet pack -c Release /p:SourceLinkCreate=true /p:VersionSuffix= /p:OfficialBuild=true
-
 echo "Pushing BionicCapacitorPlugin.$1.nupkg to NuGet..."
 dotnet nuget push ./BionicCapacitorPlugin/nupkg/BionicCapacitorPlugin.$1.nupkg --source https://api.nuget.org/v3/index.json --api-key ${NUGET_BIONIC_KEY}
 if [ $? = 0 ]
