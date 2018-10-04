@@ -2,6 +2,8 @@
 
 source ~/.nuget_bionic_key
 
+DIR=$(dirname "$(readlink -f "$BASH_SOURCE")")
+
 if [ -z "$1" ]
   then
     echo "No version supplied"
@@ -13,6 +15,8 @@ if [ -z "${NUGET_BIONIC_KEY}" ]
     echo "No NuGet key found for Bionic"
     exit 1
 fi
+
+${DIR}/build_release.sh
 
 dotnet pack -c Release /p:SourceLinkCreate=true /p:VersionSuffix= /p:OfficialBuild=true
 
