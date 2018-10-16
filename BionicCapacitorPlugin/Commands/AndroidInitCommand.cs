@@ -38,6 +38,6 @@ namespace BionicCapacitorPlugin.Commands {
       return 0;
     }
 
-    private static int NpxCapAddAndroid() => ProcessHelper.RunCmd("npx", $"cap add android");
+    private static int NpxCapAddAndroid() => ProcessHelper.RunCmd("npx", "cap add android");
   }
 }

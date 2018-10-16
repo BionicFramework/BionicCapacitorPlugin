@@ -51,7 +51,9 @@ namespace BionicCapacitorPlugin.Commands {
       return 0;
     }
 
-    private static int NpmInstall() => ProcessHelper.RunCmd("npm", $"install");
+    private static int NpmInstall() {
+      return ProcessHelper.RunCmd("npm", "install");
+    }
 
     private static int NpxCapInit() => ProcessHelper.RunCmd("npx", $"cap init {_appName} {_package}");
   }

@@ -30,8 +30,7 @@ namespace BionicCapacitorPlugin.Commands {
         Logger.Error("Unable to open Android Capacitor project. Please check platforms/capacitor");
         return 1;
       }
-      finally
-      {
+      finally {
         Directory.SetCurrentDirectory(cd);
       }
 

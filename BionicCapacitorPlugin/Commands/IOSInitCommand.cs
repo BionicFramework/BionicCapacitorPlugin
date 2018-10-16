@@ -21,7 +21,7 @@ namespace BionicCapacitorPlugin.Commands {
         Logger.Error("Capacitor project must be initialized first.");
         return 1;
       }
-      
+
       try {
         Directory.SetCurrentDirectory(capDir);
         NpxCapAddIOS();
@@ -38,6 +38,6 @@ namespace BionicCapacitorPlugin.Commands {
       return 0;
     }
 
-    private static int NpxCapAddIOS() => ProcessHelper.RunCmd("npx", $"cap add ios");
+    private static int NpxCapAddIOS() => ProcessHelper.RunCmd("npx", "cap add ios");
   }
 }

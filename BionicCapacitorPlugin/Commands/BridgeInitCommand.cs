@@ -21,7 +21,7 @@ namespace BionicCapacitorPlugin.Commands {
         Logger.Error("Capacitor project must be initialized first.");
         return 1;
       }
-      
+
       try {
         InstallBionicCapacitorBridge();
       }
