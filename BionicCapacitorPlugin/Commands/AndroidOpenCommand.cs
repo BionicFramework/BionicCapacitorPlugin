@@ -1,7 +1,10 @@
 using System;
 using System.IO;
-using BionicCapacitorPlugin.Utils;
+using BionicCLI;
+using BionicCore;
+using BionicPlugin;
 using McMaster.Extensions.CommandLineUtils;
+using static BionicCore.DirectoryUtils;
 
 namespace BionicCapacitorPlugin.Commands {
   [Command(Name = "open", Description = "Open Android Capacitor project")]
@@ -9,28 +12,30 @@ namespace BionicCapacitorPlugin.Commands {
     protected override int OnExecute(CommandLineApplication app) => Open();
 
     private static int Open() {
-      Console.WriteLine("☕  Opening Android Capacitor project...");
+      Logger.Preparing("Opening Android Capacitor project...");
 
       var cd = Directory.GetCurrentDirectory();
-      var capDir = $"{cd}/platforms/capacitor";
+      var capDir = ToOSPath($"{cd}/platforms/capacitor");
 
       if (!Directory.Exists(capDir)) {
-        Console.WriteLine($"☠  Capacitor project must be initialized first.");
+        Logger.Error("Capacitor project must be initialized first.");
         return 1;
       }
       
       try {
         Directory.SetCurrentDirectory(capDir);
-        Helper.RunCmd("npx", "cap open android");
+        ProcessHelper.RunCmdInBackground("npx", "cap open android");
       }
       catch (Exception) {
-        Console.WriteLine($"☠  Unable to open Android Capacitor project. Please check platforms/capacitor");
+        Logger.Error("Unable to open Android Capacitor project. Please check platforms/capacitor");
         return 1;
       }
       finally
       {
         Directory.SetCurrentDirectory(cd);
       }
+
+      Logger.Success("Android Studio Launched");
 
       return 0;
     }

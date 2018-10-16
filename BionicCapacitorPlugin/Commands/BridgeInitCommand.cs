@@ -1,7 +1,10 @@
 using System;
 using System.IO;
-using BionicCapacitorPlugin.Utils;
+using BionicCLI;
+using BionicCore;
+using BionicPlugin;
 using McMaster.Extensions.CommandLineUtils;
+using static BionicCore.DirectoryUtils;
 
 namespace BionicCapacitorPlugin.Commands {
   [Command(Name = "init", Description = "Initialize Capacitor Bridge for device API access")]
@@ -9,13 +12,13 @@ namespace BionicCapacitorPlugin.Commands {
     protected override int OnExecute(CommandLineApplication app) => Init();
 
     private static int Init() {
-      Console.WriteLine("☕  Initializing Capacitor Bridge...");
+      Logger.Preparing("Initializing Capacitor Bridge...");
 
       var cd = Directory.GetCurrentDirectory();
-      var capDir = $"{cd}/platforms/capacitor";
+      var capDir = ToOSPath($"{cd}/platforms/capacitor");
 
       if (!Directory.Exists(capDir)) {
-        Console.WriteLine($"☠  Capacitor project must be initialized first.");
+        Logger.Error("Capacitor project must be initialized first.");
         return 1;
       }
       
@@ -23,17 +26,17 @@ namespace BionicCapacitorPlugin.Commands {
         InstallBionicCapacitorBridge();
       }
       catch (Exception) {
-        Console.WriteLine($"☠  Something went wrong during Capacitor Bridge initialization. Please check project .csproj file");
+        Logger.Error("Something went wrong during Capacitor Bridge initialization. Please check project .csproj file");
         return 1;
       }
       finally {
         Directory.SetCurrentDirectory(cd);
       }
 
-      Console.WriteLine("🚀  Capacitor Bridge is ready to go!");
+      Logger.Success("Capacitor Bridge is ready to go!");
       return 0;
     }
 
-    private static int InstallBionicCapacitorBridge() => Helper.RunDotNet("add package BionicBridgeCapacitor");
+    private static int InstallBionicCapacitorBridge() => DotNetHelper.RunDotNet("add package BionicBridgeCapacitor");
   }
 }

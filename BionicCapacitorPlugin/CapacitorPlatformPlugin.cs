@@ -1,4 +1,3 @@
-using System;
 using BionicCapacitorPlugin.Commands;
 using BionicPlugin;
 using McMaster.Extensions.CommandLineUtils;
@@ -18,7 +17,6 @@ namespace BionicCapacitorPlugin {
     }
 
     public int Execute() {
-      Console.WriteLine("Hello from Bionic Capacitor Platform Plugin");
       return 0;
     }
 

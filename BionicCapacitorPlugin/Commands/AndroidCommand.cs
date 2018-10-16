@@ -1,3 +1,4 @@
+using BionicPlugin;
 using McMaster.Extensions.CommandLineUtils;
 
 namespace BionicCapacitorPlugin.Commands {

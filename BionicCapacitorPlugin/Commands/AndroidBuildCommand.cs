@@ -1,7 +1,10 @@
 using System;
 using System.IO;
-using BionicCapacitorPlugin.Utils;
+using BionicCLI;
+using BionicCore;
+using BionicPlugin;
 using McMaster.Extensions.CommandLineUtils;
+using static BionicCore.DirectoryUtils;
 
 namespace BionicCapacitorPlugin.Commands {
   [Command(Name = "build", Description = "Build Android Capacitor project")]
@@ -9,23 +12,23 @@ namespace BionicCapacitorPlugin.Commands {
     protected override int OnExecute(CommandLineApplication app) => Build();
 
     private static int Build() {
-      Console.WriteLine("☕  Building Android Capacitor...");
+      Logger.Preparing("Building Android Capacitor...");
 
       var cd = Directory.GetCurrentDirectory();
-      var capDir = $"{cd}/platforms/capacitor";
+      var capDir = ToOSPath($"{cd}/platforms/capacitor");
 
       if (!Directory.Exists(capDir)) {
-        Console.WriteLine($"☠  Capacitor project must be initialized first.");
+        Logger.Error("Capacitor project must be initialized first.");
         return 1;
       }
 
       try {
-        Helper.CopyAndRenameFolders(cd);
+        CopyAndRenameFolders(cd);
         Directory.SetCurrentDirectory(capDir);
-        Helper.RunCmd("npx", "cap copy android");
+        ProcessHelper.RunCmd("npx", "cap copy android");
       }
       catch (Exception) {
-        Console.WriteLine($"☠  Unable to build Android Capacitor project. Please check platforms/capacitor");
+        Logger.Error("Unable to build Android Capacitor project. Please check platforms/capacitor");
         return 1;
       }
       finally
@@ -33,7 +36,7 @@ namespace BionicCapacitorPlugin.Commands {
         Directory.SetCurrentDirectory(cd);
       }
       
-      Console.WriteLine("🚀  Capacitor successfully built. Try: bionic platform capacitor android open");
+      Logger.Success("Capacitor successfully built. Try: bionic platform capacitor android open");
 
       return 0;
     }

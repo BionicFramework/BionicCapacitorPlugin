@@ -1,7 +1,10 @@
 using System;
 using System.IO;
-using BionicCapacitorPlugin.Utils;
+using BionicCLI;
+using BionicCore;
+using BionicPlugin;
 using McMaster.Extensions.CommandLineUtils;
+using static BionicCore.DirectoryUtils;
 
 namespace BionicCapacitorPlugin.Commands {
   [Command(Name = "init", Description = "Initialize iOS project in Capacitor")]
@@ -9,13 +12,13 @@ namespace BionicCapacitorPlugin.Commands {
     protected override int OnExecute(CommandLineApplication app) => Init();
 
     private static int Init() {
-      Console.WriteLine("☕  Initializing Capacitor iOS project...");
+      Logger.Preparing("Initializing Capacitor iOS project...");
 
       var cd = Directory.GetCurrentDirectory();
-      var capDir = $"{cd}/platforms/capacitor";
+      var capDir = ToOSPath($"{cd}/platforms/capacitor");
 
       if (!Directory.Exists(capDir)) {
-        Console.WriteLine($"☠  Capacitor project must be initialized first.");
+        Logger.Error("Capacitor project must be initialized first.");
         return 1;
       }
       
@@ -24,17 +27,17 @@ namespace BionicCapacitorPlugin.Commands {
         NpxCapAddIOS();
       }
       catch (Exception) {
-        Console.WriteLine($"☠  Something went wrong during Capacitor iOS initialization. Please check platforms/capacitor");
+        Logger.Error("Something went wrong during Capacitor iOS initialization. Please check platforms/capacitor");
         return 1;
       }
       finally {
         Directory.SetCurrentDirectory(cd);
       }
 
-      Console.WriteLine("🚀  Capacitor iOS is ready to go! - try: bionic platform capacitor ios open");
+      Logger.Success("Capacitor iOS is ready to go! - try: bionic platform capacitor ios open");
       return 0;
     }
 
-    private static int NpxCapAddIOS() => Helper.RunCmd("npx", $"cap add ios");
+    private static int NpxCapAddIOS() => ProcessHelper.RunCmd("npx", $"cap add ios");
   }
 }
