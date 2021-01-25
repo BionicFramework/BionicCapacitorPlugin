@@ -1,13 +1,22 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+	  <TargetFramework>net5.0</TargetFramework>
     <Description>Bionic Capacitor Plugin - Capacitor Platform CLI commands</Description>
     <PackageOutputPath>./nupkg</PackageOutputPath>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="BionicPlugin" Version="1.0.26" />
-    <PackageReference Include="BionicCore" Version="1.0.26" />
+    <Reference Include="BionicCore">
+      <HintPath>..\..\BionicCLI\BionicCore\bin\Debug\net5.0\BionicCore.dll</HintPath>
+    </Reference>
+    <Reference Include="BionicPlugin">
+      <HintPath>..\..\BionicCLI\BionicPlugin\bin\Debug\net5.0\BionicPlugin.dll</HintPath>
+    </Reference>
+    <Reference Include="McMaster.Extensions.CommandLineUtils">
+      <HintPath>..\..\BionicCLI\BionicPlugin\bin\Debug\net5.0\McMaster.Extensions.CommandLineUtils.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>
