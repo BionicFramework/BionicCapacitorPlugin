@@ -1,11 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-	  <TargetFramework>net5.0</TargetFramework>
+	<TargetFramework>net5.0</TargetFramework>
     <Description>Bionic Capacitor Template - Capacitor Project Template for Bionic</Description>
     <PackageOutputPath>./nupkg</PackageOutputPath>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageIcon>icon.png</PackageIcon>
+    <PackageIcon>bionic_logo_icon.png</PackageIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="icon.png">
+    <None Include="..\..\bionic_logo_icon.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
